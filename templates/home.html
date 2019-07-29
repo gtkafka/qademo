@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<style> 
+  textarea {
+  width: 100%;
+  height: 400px;
+  padding: 4px 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  }
+</style>
+<title>Upload new File</title>
+<h1>Question & Answer Machine</h1>
+<p>A simple question and answer application. Simply upload a textfile and type in a question!</p>
+<h4>Upload a new file</h4>
+<form action="" method="POST" enctype=multipart/form-data>
+  <p><input type=file name=file>
+     <input type=submit value=Upload>
+<!--</form>
+<form method="POST">-->
+    <!-- <pre>{{ content }}</pre> -->
+    <textarea name="context">{{ content }}</textarea>
+    <!--</form>-->
+<h4>Query the above context!</h4>
+{% block question%}
+<!--<form method="POST">-->
+<p>Query: <input type ="text" name = "question" style="width: 100%;" value="{{ request.form['question'] }}"/>
+	{{ question }}</p>
+    <input type="submit" value=Ask>
+</form>
+{% endblock question %}
+{% endblock content %}
