@@ -8,11 +8,12 @@ import os
 
 app = Flask(__name__)
 app.debug=True
-WDIR = dir_path = os.path.dirname(os.path.realpath(__file__))
+WDIR = os.path.dirname(os.path.realpath(__file__))
 SECRET_KEY = os.urandom(32)
 TMP_DIR   = WDIR + '/tmp/'
 SQUAD_DIR = WDIR + '/finetuned_squad'
-MODEL_DIR = WDIR + '/models'
+PAR_DIR = os.path.dirname(WDIR)
+MODEL_DIR = PAR_DIR + '/clouddrive'
 ALLOWED_EXTENSIONS = set(['txt'])
 
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -95,7 +96,7 @@ def home():
             if a0 == '':
                 answer = "I'm " + str(round(p0*100, 2)) + \
                         "% certain the answer cannot be found, but " + \
-                        "this might be a relevant to your query:\n" + a1
+                        "this might be relevant to your query:\n" + a1
             else: 
                 answer = a0 + " ..................with " + str(round(p0*100,2)) + "% certainty."
 
