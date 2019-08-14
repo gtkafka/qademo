@@ -37,13 +37,14 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-def set_args():
+
+def set_args(MODEL_DIR=MODEL_DIR, TMP_DIR=TMP_DIR):
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--predict_file", default="/home/gene/qademo/tmp/eval.json", type=str)
+    parser.add_argument("--predict_file", default=TMP_DIR+"eval.json", type=str)
     parser.add_argument("--model_type", default="bert", type=str)
-    parser.add_argument("--model_name_or_path", default="/home/gene/clouddrive", type=str)
-    parser.add_argument("--output_dir", default="/home/gene/clouddrive", type=str)
+    parser.add_argument("--model_name_or_path", default=MODEL_DIR, type=str)
+    parser.add_argument("--output_dir", default=MODEL_DIR, type=str)
     parser.add_argument("--cache_dir", default="", type=str)
     parser.add_argument('--version_2_with_negative', action='store_true')
     parser.add_argument('--null_score_diff_threshold', type=float, default=0.0)
